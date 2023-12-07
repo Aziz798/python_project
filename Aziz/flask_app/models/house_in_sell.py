@@ -111,14 +111,93 @@ class House_in_sell:
     
 
 
-        # Show all houses in sell where the bedrooms and bathrooms is the criteria
+    # Show all houses in sell where the bedrooms and bathrooms is the criteria
     @classmethod
-    def show_all_houses_in_sell_criteria_bedrooms(cls,data):
-        query="SELECT * FROM houses_in_sell WHERE beds<=%(max)s AND beds>=%(min)s;"
+    def show_all_houses_in_sell_criteria_bedrooms_and_bathrooms(cls,data):
+        query="SELECT * FROM houses_in_sell WHERE beds<=%(max_bed)s AND beds>=%(min_bed)s AND bathroom<=%(max_bathroom)s AND bathroom>=%(min_bathroom)s;"
+        result=connectToMySQL(DATABASE).query_db(query,data)
+        all_houses=[]
+        for house in result:
+            all_houses.append(cls(house))
+        return all_houses
+    
+
+    # Show all houses in sell where no mortage is available is the criteria
+    @classmethod
+    def show_all_houses_in_sell_criteria_no_moratge_availability(cls,data):
+        query="SELECT * FROM houses_in_sell WHERE mortage_validation=0;"
         result=connectToMySQL(DATABASE).query_db(query,data)
         all_houses=[]
         for house in result:
             all_houses.append(cls(house))
         return all_houses
 
+    # Show all houses in sell where bedrooms and bathrooms and mortage available is the criteria
+    @classmethod
+    def show_all_houses_in_sell_criteria_bedrooms_and_bathrooms_moratge_available(cls,data):
+        query="SELECT * FROM houses_in_sell WHERE beds<=%(max_bed)s AND beds>=%(min_bed)s AND bathroom<=%(max_bathroom)s AND bathroom>=%(min_bathroom)s AND mortage_validation=1;"
+        result=connectToMySQL(DATABASE).query_db(query,data)
+        all_houses=[]
+        for house in result:
+            all_houses.append(cls(house))
+        return all_houses
+        
+    # Show all houses in sell where bedrooms and mortage available is the criteria
+    @classmethod
+    def show_all_houses_in_sell_criteria_bed_and_mortage_availability(cls,data):
+        query="""SELECT * FROM houses_in_sell WHERE 
+        beds<=%(max_bed)s AND beds>=%(min_bed)s AND mortage_validation=1;"""
+        result=connectToMySQL(DATABASE).query_db(query,data)
+        all_houses=[]
+        for house in result:
+            all_houses.append(cls(house))
+        return all_houses
+    
 
+    # Show all houses in sell where bedrooms and mortage not available is the criteria
+    @classmethod
+    def show_all_houses_in_sell_criteria_bed_and_mortage_not_available(cls,data):
+        query="""SELECT * FROM houses_in_sell WHERE 
+        beds<=%(max_bed)s AND beds>=%(min_bed)s AND mortage_validation=0;"""
+        result=connectToMySQL(DATABASE).query_db(query,data)
+        all_houses=[]
+        for house in result:
+            all_houses.append(cls(house))
+        return all_houses
+    
+
+    # Show all houses in sell where bethrooms and mortage  available is the criteria
+    @classmethod
+    def show_all_houses_in_sell_criteria_bathroom_and_mortage_available(cls,data):
+        query="""SELECT * FROM houses_in_sell WHERE 
+        bathroom<=%(max_bathroom)s AND bethroom>=%(min_bathroom)s AND mortage_validation=1;"""
+        result=connectToMySQL(DATABASE).query_db(query,data)
+        all_houses=[]
+        for house in result:
+            all_houses.append(cls(house))
+        return all_houses
+    
+
+    # Show all houses in sell where bethrooms and mortage not available is the criteria
+    @classmethod
+    def show_all_houses_in_sell_criteria_bathroom_and_mortage_not_available(cls,data):
+        query="""SELECT * FROM houses_in_sell WHERE 
+        bathroom<=%(max_bathroom)s AND bethroom>=%(min_bathroom)s AND mortage_validation=0;"""
+        result=connectToMySQL(DATABASE).query_db(query,data)
+        all_houses=[]
+        for house in result:
+            all_houses.append(cls(house))
+        return all_houses
+    
+
+
+    # Show all houses in sell where bedrooms and bathrooms and mortage not available is the criteria
+    @classmethod
+    def show_all_houses_in_sell_criteria_bedrooms_and_bathrooms_moratge_available(cls,data):
+        query="SELECT * FROM houses_in_sell WHERE beds<=%(max_bed)s AND beds>=%(min_bed)s AND bathroom<=%(max_bathroom)s AND bathroom>=%(min_bathroom)s AND mortage_validation=0;"
+        result=connectToMySQL(DATABASE).query_db(query,data)
+        all_houses=[]
+        for house in result:
+            all_houses.append(cls(house))
+        return all_houses
+        
