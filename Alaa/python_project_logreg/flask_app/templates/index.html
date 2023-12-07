@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Login - Reg</title>
+</head>
+
+<body class="container mt-5">
+    <h1 class="text-center">Welcome</h1>
+    <hr />
+    <div class="row">
+        <!-- Register Form -->
+        <div class="col-md-6">
+            <div class="border p-4 mb-4 bg-light">
+                <h3 class="mb-4">Register</h3>
+                {% with messages = get_flashed_messages(category_filter=["reg"]) %}
+                <!-- declare a variable called messages -->
+                {% if messages %} <!-- check if there are any messages -->
+                {% for message in messages %} <!-- loop through the messages -->
+
+                <p style="color: red">{{message}}</p>
+                <!-- display each message in a paragraph tag -->
+                {% endfor %} {% endif %} {% endwith %}
+
+                <form action="/users/register" method="post">
+                    <div class="form-group">
+                        <label for="first_name">first_name</label>
+                        <input type="text" class="form-control" name="first_name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="first_name">last_name</label>
+                        <input type="text" class="form-control" name="last_name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" class="form-control" name="confirm_password" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="col-md-6">
+            <div class="border p-4 mb-4 bg-light">
+                <form action="/users/login" method="post">
+                    <h3 class="mb-4">Login</h3>
+                    {% with messages = get_flashed_messages(category_filter=["log"]) %}
+                    <!-- declare a variable called messages -->
+                    {% if messages %} <!-- check if there are any messages -->
+                    {% for message in messages %} <!-- loop through the messages -->
+
+                    <p style="color: red">{{message}}</p>
+                    <!-- display each message in a paragraph tag -->
+                    {% endfor %} {% endif %} {% endwith %}
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js scripts (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
