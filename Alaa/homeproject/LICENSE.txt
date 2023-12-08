@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2023 Aladdin Fehri (https://codepen.io/Aladdin-Fehri/pen/MWLLqbd)
+Copyright (c) 2023 Itadori (https://codepen.io/Aladdin-Fehri/pen/MWLLqbd)
 Fork of an original work Timed Cards Opening (https://codepen.io/Aladdin-Fehri/pen/MWLLqbd)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
