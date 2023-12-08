@@ -200,4 +200,5 @@ class House_in_sell:
         for house in result:
             all_houses.append(cls(house))
         return all_houses
+    
         
