@@ -1,100 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real Estate Dashboard</title>
+    <title>Create/Edit Property Listing</title>
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-    <style>
-        /* body {
-    background: linear-gradient(-45deg, #f7f7f7, #e47d07);
-    background-size: 400% 400%;
-    animation: gradient 5s ease infinite;
-    height: 200vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-} */
-    </style>
 </head>
-
-
 <body>
 
     <div class="container mt-5">
         <form id="property-form">
-            <div class="container mt-5">
-                <form id="property-form">
-                    <h2>Create/Edit a Property Listing</h2>
+            <h2>Create/Edit a Property Listing</h2>
 
-                    <div class="form-group">
-                        <label for="property-type">Type:</label>
-                        <select class="form-control" id="property-type" name="property-type">
-                            <option value="rent">For Rent</option>
-                            <option value="sell">For Sale</option>
-                            <option value="mortgage">For Mortgage</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="location">Location:</label>
-                        <input type="text" class="form-control" id="location" name="location"
-                            placeholder="Enter location">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="bathroom">Bathrooms:</label>
-                        <input type="text" class="form-control" id="bathroom" name="bathroom"
-                            placeholder="Enter number of bathrooms">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="price">Price:</label>
-                        <input type="text" class="form-control" id="price" name="price" placeholder="Enter price">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="bedrooms">Number of Bedrooms:</label>
-                        <input type="number" class="form-control" id="bedrooms" name="beds"
-                            placeholder="Enter number of bedrooms">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="surface">Surface:</label>
-                        <input type="number" class="form-control" id="surface" name="surface"
-                            placeholder="Enter number of surface">
-                    </div>
-
-                    <button type="button" class="btn btn-danger">Submit</button>
-                </form>
+            <div class="form-group">
+                <label for="property-type">Type:</label>
+                <select class="form-control" id="property-type" name="property-type" onchange="updatePriceInput()">
+                    <option value="rent">For Rent</option>
+                    <option value="sell">For Sale</option>
+                    <option value="mortgage">For Mortgage</option>
+                </select>
             </div>
+
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="Enter location">
+            </div>
+
+            <div class="form-group">
+                <label for="bathroom">Bathrooms:</label>
+                <input type="text" class="form-control" id="bathroom" name="bathroom" placeholder="Enter number of bathrooms">
+            </div>
+
+            <div class="form-group">
+                <label id="price-label" for="price">Price:</label>
+                <input type="text" class="form-control" id="price" name="price" placeholder="Enter price">
+            </div>
+
+            <div class="form-group">
+                <label for="bedrooms">Number of Bedrooms:</label>
+                <input type="number" class="form-control" id="bedrooms" name="beds" placeholder="Enter number of bedrooms">
+            </div>
+
+            <div class="form-group">
+                <label for="surface">Surface:</label>
+                <input type="number" class="form-control" id="surface" name="surface" placeholder="Enter number of surface">
+            </div>
+
+            <button type="button" class="btn btn-danger">Submit</button>
         </form>
     </div>
-
-
 
     <!-- Bootstrap JS and Popper.js scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
 
+    <!-- <script>
+        function updatePriceInput() {
+            var propertyType = document.getElementById('property-type').value;
+            var priceLabel = document.getElementById('price-label');
+            var priceInput = document.getElementById('price');
+
+            if (propertyType === 'mortgage') {
+                priceLabel.innerText = 'Price per Month:';
+                priceInput.placeholder = 'Enter price per month';
+            } else {
+                priceLabel.innerText = 'Price:';
+                priceInput.placeholder = 'Enter price';
+            }
+        }
+
+
+        Sow here when we select mortgage the price input will change to price per month 
+    </script> -->
+</body>
 </html>
