@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #search-form {
+            text-align: center;
+            margin: 20px;
+        }
+
+        #property-listings {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .property-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Real Estate Dashboard</h1>
+    </header>
+
+    <div id="search-form">
+        <label for="search-location">Location:</label>
+        <input type="text" id="search-location" placeholder="Enter location">
+        
+        <label for="search-type">Type:</label>
+        <select id="search-type">
+            <option value="rent">For Rent</option>
+            <option value="sell">For Sale</option>
+            <option value="mortgage">For Mortgage</option>
+        </select>
+
+        <button onclick="searchProperties()">Search</button>
+    </div>
+
+    <div id="property-listings">
+        <!-- Property listings will be displayed here -->
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Real Estate Dashboard</p>
+    </footer>
+
+    <script>
+        // Dummy property data (replace this with dynamic data from the server)
+        const properties = [
+            { id: 1, type: 'rent', location: 'City A', price: '$1,200/month', bedrooms: 2 },
+            { id: 2, type: 'sell', location: 'City B', price: '$250,000', bedrooms: 3 },
+            { id: 3, type: 'mortgage', location: 'City C', price: '$1,500/month', bedrooms: 4 },
+        ];
+
+        function searchProperties() {
+            const location = document.getElementById('search-location').value;
+            const type = document.getElementById('search-type').value;
+
+            // Filter properties based on user input (dummy data)
+            const filteredProperties = properties.filter(property =>
+                property.location.toLowerCase().includes(location.toLowerCase()) && property.type === type
+            );
+
+            displayProperties(filteredProperties);
+        }
+
+        function displayProperties(properties) {
+            const listingsContainer = document.getElementById('property-listings');
+            listingsContainer.innerHTML = '';
+
+            properties.forEach(property => {
+                const card = document.createElement('div');
+                card.className = 'property-card';
+                card.innerHTML = `
+                    <h3>${property.location}</h3>
+                    <p>Type: ${property.type}</p>
+                    <p>Price: ${property.price}</p>
+                    <p>Bedrooms: ${property.bedrooms}</p>
+                `;
+                listingsContainer.appendChild(card);
+            });
+        }
+
+        // Initial display of properties (all properties)
+        displayProperties(properties);
+    </script>
+
+</body>
+</html>
