@@ -9,7 +9,8 @@ def home_page():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard')
+    houses=House.select_all_houses_with_pic()
+    return render_template('dashboard.html',houses=houses)
 
 
 

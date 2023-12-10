@@ -9,6 +9,7 @@ class House:
         self.id=data['id']
         self.user_id=data['user_id']
         self.type=data['type']
+        self.house_type=data['house_type']
         self.mortage_validation=data['mortage_validation']
         self.mortage_monthly=data['mortage_monthly']
         self.location=data['location']
@@ -16,6 +17,7 @@ class House:
         self.bathroom=data['bathroom']
         self.beds=data['beds']
         self.surface=data['surface']
+        self.description=data['description']
         self.created_at=data['created_at']
         self.updated_at=data['updated_at']
         self.owner=''
@@ -26,9 +28,9 @@ class House:
     @classmethod
     def create_a_house(cls,data):
         query="""INSERT INTO houses 
-        (user_id,type,mortage_validation,mortage_monthly,location,price,bathroom,beds,surface)
+        (user_id,type,mortage_validation,mortage_monthly,location,price,bathroom,beds,surface,house_type,description)
         VALUES
-        (%(user_id)s,%(type)s,%(mortage_validation)s,%(mortage_monthly)s,%(location)s,%(price)s,%(bathroom)s,%(beds)s,%(surface)s);"""
+        (%(user_id)s,%(type)s,%(mortage_validation)s,%(mortage_monthly)s,%(location)s,%(price)s,%(bathroom)s,%(beds)s,%(surface)s,%(house_type)s,%(description)s);"""
         return connectToMySQL(DATABASE).query_db(query,data)
 
     @classmethod
@@ -42,7 +44,7 @@ class House:
     def select_one_house_with_pics_and_owner(cls,data):
         query="""SELECT houses.*,first_name,last_name,email,phone_number FROM houses JOIN users ON
             houses.user_id=users.id WHERE houses.id=%(id)s;
-            SELECT path FROM pics WHERE house_id=%(house_id)s;"""
+            SELECT path FROM pics WHERE house_id=%(id)s;"""
         result=connectToMySQL(DATABASE).query_db(query,data)
         return result[0]
     
@@ -90,6 +92,9 @@ class House:
         if 'type' in criteria:
             conditions.append(f"houses.type = '{criteria['type']}'")
 
+        if 'house_type' in criteria:
+            conditions.append(f"houses.house_type = '{criteria['house_type']}'")
+
         if 'location' in criteria:
             conditions.append(f"houses.location = '{criteria['location']}'")
 
@@ -103,7 +108,7 @@ class House:
             conditions.append(f"houses.mortage_monthly <= {criteria['max_mortage_monthly']}")
 
         if conditions:
-            query += " AND ".join(conditions) +";"
+            query += " AND ".join(conditions)
 
         results = connectToMySQL(DATABASE).query_db(query)
         
@@ -122,6 +127,7 @@ class House:
                     JOIN pics ON houses.id = pics.house_id
                     SET
                         houses.type =%(type)s,
+                        houses.house_type =%(house_type)s
                         houses.mortage_validation = %(mortage_validation)s,
                         houses.mortage_monthly = %(mortage_monthly)s,
                         houses.location = %(location)s,
@@ -129,6 +135,7 @@ class House:
                         houses.bathroom = %(bathroom)s,
                         houses.beds = %(beds)s,
                         houses.surface = %(surface)s,
+                        houses.description = %(description)s,
                         pics.path = %(path)s
                     WHERE  houses.id=%(id)s
                     AND pics.house_id=%(id)s;"""
