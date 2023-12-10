@@ -40,28 +40,28 @@ class User:
     @staticmethod
     def validate(data):
         is_valid=True
-        if data['phone_number']<9:
+        if len(data['phone_number'])<9:
             is_valid=False
-            flash('Phone Number must be greater than 8 digits',"register")
+            flash('Phone Number must be greater than 8 digits',"reg")
         if len(data['first_name'])<2:
             is_valid=False
-            flash('First Name must be greater than 2 characters',"register")
+            flash('First Name must be greater than 2 characters',"reg")
         if len(data['last_name'])<2:
             is_valid=False
-            flash('Last Name must be greater than 2 characters',"register")
+            flash('Last Name must be greater than 2 characters',"reg")
         if not EMAIL_REGEX.match(data['email']): 
             flash("Invalid email address!")
             is_valid = False
         if User.get_by_email({'email':data['email']}):
-            flash('Email already in use,hope by you 😊','register')
+            flash('Email already in use,hope by you 😊','reg')
             is_valid=False
             # PASSWORD VALIDATION:
                 # LENGTH:
         if len(data['password'])<8:
-            flash('Password too short','register')
+            flash('Password too short','reg')
             is_valid=False
                 # Confirm password:
         elif data['password']!=data['confirm_pw']:
-            flash('Password must match','register')
+            flash('Password must match','reg')
             is_valid=False
         return is_valid
