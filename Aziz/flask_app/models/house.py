@@ -50,6 +50,10 @@ class House:
         query="SELECT path FROM pics WHERE house_id=%(house_id)s"
         result=connectToMySQL(DATABASE).query_db(query,data)
         pics=[]
+        for pic in result:
+            pics.append(pic)
+        return pics
+
     
     @classmethod
     def select_all_houses_with_pic(cls):
@@ -148,9 +152,9 @@ class House:
 
     @classmethod
     def delete_the_house_with_its_pictures(cls,data):
-        query="""DELETE houses, pics
+        query="""DELETE houses.*, pics.*
             FROM houses
             JOIN pics ON houses.id = pics.house_id
-            WHERE your_condition houses.id=%(id)s
-                    AND pics.house_id=%(id)s;"""
+            WHERE houses.id=%(id)s
+                AND pics.house_id=%(house_id)s;"""
         return connectToMySQL(DATABASE).query_db(query,data)
