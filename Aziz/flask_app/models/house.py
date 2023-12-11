@@ -41,12 +41,15 @@ class House:
 
 
     @classmethod
-    def select_one_house_with_pics_and_owner(cls,data):
+    def select_one_house_with_owner(cls,data):
         query="""SELECT houses.*,first_name,last_name,email,phone_number FROM houses JOIN users ON
-            houses.user_id=users.id WHERE houses.id=%(id)s;
-            SELECT path FROM pics WHERE house_id=%(id)s;"""
+            houses.user_id=users.id WHERE houses.id=%(id)s;"""
         result=connectToMySQL(DATABASE).query_db(query,data)
         return result[0]
+    def get_one_house_all_pics(cls,data):
+        query="SELECT path FROM pics WHERE house_id=%(house_id)s"
+        result=connectToMySQL(DATABASE).query_db(query,data)
+        pics=[]
     
     @classmethod
     def select_all_houses_with_pic(cls):
@@ -122,9 +125,8 @@ class House:
 
 
     @classmethod
-    def update_a_house_with_its_picture(cls,data):
+    def update_a_house(cls,data):
         query="""UPDATE houses
-                    JOIN pics ON houses.id = pics.house_id
                     SET
                         houses.type =%(type)s,
                         houses.house_type =%(house_type)s
@@ -136,11 +138,13 @@ class House:
                         houses.beds = %(beds)s,
                         houses.surface = %(surface)s,
                         houses.description = %(description)s,
-                        pics.path = %(path)s
-                    WHERE  houses.id=%(id)s
-                    AND pics.house_id=%(id)s;"""
+                    WHERE  houses.id=%(id)s;"""
         return connectToMySQL(DATABASE).query_db(query,data)
     
+    @classmethod
+    def update_pics_of_the_house(cls,data):
+        query="UPDATE pics SET path=%(path)s WHERE house_id=%(house_id)s;"
+        return connectToMySQL(DATABASE).query_db(query,data)
 
     @classmethod
     def delete_the_house_with_its_pictures(cls,data):

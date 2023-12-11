@@ -26,10 +26,10 @@ def register():
 def login():
     user_from_db=User.get_by_email({'email':request.form['email']})
     if not user_from_db:
-        flash("Email doesn't exist, try to register first","login")
+        flash("Email doesn't exist, try to register first","log")
         return redirect('/register/login')
     if not bcrypt.check_password_hash(user_from_db.password,request.form['password']):
-        flash("Password wrong please try again.","login")
+        flash("Password wrong please try again.","log")
         return redirect('/register/login')
     session['user_id']=user_from_db.id
     session['username']=user_from_db.first_name

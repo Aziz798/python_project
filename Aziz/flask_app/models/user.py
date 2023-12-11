@@ -18,7 +18,7 @@ class User:
     @classmethod
     def create(cls,data):
         query="""INSERT INTO users (first_name,last_name,email,phone_number,password)
-            VALUES (%(first_name)s,%(last_name)s,%(phone_number)s,%(email)s,%(password)s);"""
+            VALUES (%(first_name)s,%(last_name)s,%(email)s,%(phone_number)s,%(password)s);"""
         return connectToMySQL(DATABASE).query_db(query,data)
 
     @classmethod
@@ -40,7 +40,7 @@ class User:
     @staticmethod
     def validate(data):
         is_valid=True
-        if len(data['phone_number'])<9:
+        if len(data['phone_number'])<8:
             is_valid=False
             flash('Phone Number must be greater than 8 digits',"reg")
         if len(data['first_name'])<2:
