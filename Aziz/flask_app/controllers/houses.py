@@ -1,6 +1,13 @@
-from flask_app import app
+from flask_app import app, ALLOWED_EXTENSIONS, UPLOAD_FOLDER
 from flask import render_template ,redirect,request,flash,session
 from flask_app.models.house import House
+import os
+from werkzeug.utils import secure_filename
+import uuid
+
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/')
@@ -37,8 +44,18 @@ def insert_pics_to_the_house_to_sell():
     print("IMAGE FORM-----",request.form)
     print("IMAGE FiLE-----",request.files)
     file = request.files['path']
-    
-    return redirect(f'/house/{request.form['house_id']}')
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        # Generate a UUID for the filename
+        unique_filename = str(uuid.uuid4()) + '_' + filename
+        file.save(os.path.join(UPLOAD_FOLDER, unique_filename))
+
+        data = {
+            **request.form,
+            'path': unique_filename
+        }
+        House.put_photos_for_the_house(data)
+    return redirect(f'/house/pics_forhouse/{request.form['house_id']}')
 
 @app.route('/house/pics_forhouse/<int:id>')
 def get_house_by_id(id):
