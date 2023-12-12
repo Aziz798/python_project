@@ -47,11 +47,11 @@
                     <li><a href="#about" class="page-scroll">About</a></li>
                     <li><a href="#services" class="page-scroll">Services</a></li>
                     <li><a href="#contact" class="page-scroll">Contact</a></li>
-                    <li><a href="#" class="page-scroll">Buy</a></li>
-                    <li><a href="#" class="page-scroll">Rent</a></li>
-                    <li><a href="#" class="page-scroll">Sell</a></li>
-                    <li><a href="#" class="page-scroll">Mortgage</a></li>
-                    <li><a href="#" class="page-scroll">{{session['username']}}'s Houses</a></li>
+                    <li><a href="/buy/house" class="page-scroll">Buy</a></li>
+                    <li><a href="/rent/house" class="page-scroll">Rent</a></li>
+                    <li><a href="/sell/house" class="page-scroll">Sell or Rent</a></li>
+                    <li><a href="/mortgage/house" class="page-scroll">Mortgage</a></li>
+                    <li><a href="/house/{{session['user_id']}}" class="page-scroll">{{session['username']}}'s Houses</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

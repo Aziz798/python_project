@@ -158,3 +158,17 @@ class House:
             WHERE houses.id=%(id)s
                 AND pics.house_id=%(house_id)s;"""
         return connectToMySQL(DATABASE).query_db(query,data)
+    
+
+    @classmethod
+    def select_all_houses_for_sale_with_pic(cls):
+        query="SELECT houses.*,path FROM houses JOIN pics ON houses.id=pics.house_id WHERE houses.type='sale';"
+        results=connectToMySQL(DATABASE).query_db(query)
+        print(results)
+        houses=[]
+        for house in results:
+            row= cls(house)
+            row.pic=house['path']
+            houses.append(row)
+        return houses
+    
