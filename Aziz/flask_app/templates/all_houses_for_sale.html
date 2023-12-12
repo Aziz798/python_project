@@ -34,7 +34,7 @@
         <div class="container-fluid">
             <div class="heading_container">
                 <h2>
-                    Our Houses
+                    Our Houses For Sale 
                 </h2>
                 <p>
                     There are many variations of passages of Lorem Ipsum available, but the
@@ -42,21 +42,23 @@
             </div>
             <div class="sale_container"> 
                 {%for house in houses %}
-                <div class="box">
+                <a href="/house/{{house.id}}">
+                    <div class="box">
 
-                    <div class="img-box">
-                        <img src="{{house.path}}" alt="">
+                        <div class="img-box">
+                            <img src="{{house.pic}}">
+                        </div>
+                        <div class="detail-box">
+                            <h6>
+                                {{house.price}}dt
+                            </h6>
+                            <p>
+                                <span>{{house.beds}}</span>bds | <span>{{house.bathroom}}</span> ba | <span>{{house.surface}}</span> m² {{house.house_type}} for {{house.type}}
+                            </p>
+                            <p>{{house.description}}</p>
+                        </div>
                     </div>
-                    <div class="detail-box">
-                        <h6>
-                            {{house.price}}dt
-                        </h6>
-                        <p>
-                            <span>{{house.beds}}</span>bds | <span>{{house.bathroom}}</span> ba | <span>{{house.surface}}</span> m² {{house.house_type}} for {{house.type}}
-                        </p>
-                        <p>{{house.description}}</p>
-                    </div>
-                </div>
+                </a>
                 {%endfor%}
             </div>
         </div>
