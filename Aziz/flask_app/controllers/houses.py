@@ -1,6 +1,7 @@
 from flask_app import app, ALLOWED_EXTENSIONS, UPLOAD_FOLDER
 from flask import render_template ,redirect,request,flash,session
 from flask_app.models.house import House
+from flask_app.models.message import Message
 import os
 from werkzeug.utils import secure_filename
 import uuid
@@ -57,9 +58,46 @@ def insert_pics_to_the_house_to_sell():
         House.put_photos_for_the_house(data)
     return redirect(f'/house/pics_forhouse/{request.form['house_id']}')
 
+@app.route('/house/confirm', methods=['post'])
+def confirm_house():
+    id  = request.form['id']
+    return redirect(f'/house/{int(id)}')
+
 @app.route('/house/pics_forhouse/<int:id>')
 def get_house_by_id(id):
-    return render_template('on_house.html', data=id)
+    pics=House.get_all_photos_for_one_house({'house_id':id})
+    return render_template('on_house.html', data=id ,pics=pics)
+
+
+@app.route("/rent/house")
+def house_rent():
+    houses=House.select_all_houses_for_rent_with_pic()
+    return render_template('all_houses_for_rent.html',houses=houses)
+
+@app.route("/mortgage/house")
+def mortgage():
+    houses=House.select_all_houses_for_mortgage_with_pic()
+    return render_template('all_houses_for_mortgage.html',houses=houses)
+
+
+@app.route("/house/<int:id>")
+def one_house(id):
+    home=House.select_one_house_with_owner({'id':id})
+    pics=House.get_all_photos_for_one_house({'house_id':id})
+    print(pics)
+    return render_template('one_house.html', house=home, pics=pics)
+
+
+@app.route("/message/<int:sender_id>/<int:house_id>/<int:receiver_id>")
+def message(sender_id,house_id,receiver_id):
+    data={
+        'sender_id':sender_id,
+        'house_id':house_id,
+        'receiver_id':receiver_id
+    }
+    messages=Message.show_one_conversation(data)
+    return render_template('chat_room.html',messages=messages)
+
 
 
 

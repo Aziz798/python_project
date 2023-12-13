@@ -67,7 +67,7 @@ hr {
 	transition: all 0.8s;
 }
 #menu.navbar-default {
-	background-color: #fff;
+	/* background-color: #ffffff48; */
 	border-color: rgba(231, 231, 231, 0);
 	box-shadow: 0 0 30px rgba(0,0,0,0.2)
 }
@@ -349,7 +349,7 @@ label {
 	font-size: 12px;
 	font-weight: 400;
 	font-family: 'Open Sans', sans-serif;
-	float: left;
+	/* float: left; */
 }
 #contact .form-control {
 	display: block;
@@ -433,6 +433,8 @@ color: #777;
 	height: 150px;
 	margin: 0;
 	padding: 0;
+	border-radius: 55px;
+
 }
 .navbar-collapse{
 	flex-basis: 0% !important;
