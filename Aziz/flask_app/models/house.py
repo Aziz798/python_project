@@ -57,18 +57,24 @@ class House:
     
     @classmethod
     def select_all_houses_with_pic(cls):
-        query="SELECT houses.*,path FROM houses JOIN pics ON houses.id=pics.house_id;"
+        query="""SELECT houses.*, MIN(pics.path) AS selected_path
+                FROM houses
+                JOIN pics ON houses.id = pics.house_id
+                GROUP BY houses.id;"""
         results=connectToMySQL(DATABASE).query_db(query)
         houses=[]
         for house in results:
             row= cls(house)
-            row.pic=house['path']
+            row.pic=house['selected_path']
             houses.append(row)
         return houses
     
     @classmethod
     def select_houses_with_crita(cls,data):
-        query = "SELECT houses.*, path FROM houses JOIN pics ON houses.id = pics.house_id WHERE "
+        query = """SELECT houses.*, MIN(pics.path) AS selected_path
+                FROM houses
+                JOIN pics ON houses.id = pics.house_id
+                GROUP BY houses.id WHERE"""
         criteria= {key: value for key, value in data.items() if value}
         conditions = []
 
@@ -162,13 +168,64 @@ class House:
 
     @classmethod
     def select_all_houses_for_sale_with_pic(cls):
-        query="SELECT houses.*,path FROM houses JOIN pics ON houses.id=pics.house_id WHERE houses.type='sale';"
+        query="""SELECT houses.*, MIN(pics.path) AS selected_path
+                        FROM houses
+                        JOIN pics ON houses.id = pics.house_id
+                        WHERE houses.type = 'sale'
+                        GROUP BY houses.id;
+                        ;"""
         results=connectToMySQL(DATABASE).query_db(query)
         print(results)
         houses=[]
         for house in results:
             row= cls(house)
-            row.pic=house['path']
+            row.pic=house['selected_path']
             houses.append(row)
         return houses
     
+
+    @classmethod
+    def select_all_houses_for_rent_with_pic(cls):
+        query="""SELECT houses.*, MIN(pics.path) AS selected_path
+                        FROM houses
+                        JOIN pics ON houses.id = pics.house_id
+                        WHERE houses.type = 'rent'
+                        GROUP BY houses.id;
+                        ;"""
+        results=connectToMySQL(DATABASE).query_db(query)
+        print(results)
+        houses=[]
+        for house in results:
+            row= cls(house)
+            row.pic=house['selected_path']
+            houses.append(row)
+        return houses
+    
+
+    @classmethod
+    def select_all_houses_for_mortgage_with_pic(cls):
+        query="""SELECT houses.*, MIN(pics.path) AS selected_path
+                        FROM houses
+                        JOIN pics ON houses.id = pics.house_id
+                        WHERE houses.mortage_validation = 1
+                        GROUP BY houses.id;
+                        ;"""
+        results=connectToMySQL(DATABASE).query_db(query)
+        print(results)
+        houses=[]
+        for house in results:
+            row= cls(house)
+            row.pic=house['selected_path']
+            houses.append(row)
+        return houses
+    
+
+    @classmethod
+    def get_all_photos_for_one_house(cls,data):
+        query='SELECT path FROM pics WHERE house_id=%(house_id)s'
+        results=connectToMySQL(DATABASE).query_db(query,data)
+        pics=[]
+        for pic in results:
+            pics.append(pic)
+            print(pics)
+        return pics
