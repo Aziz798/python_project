@@ -1,0 +1,54 @@
+
+
+.sameh {
+    background-color: #b6cadd !important;
+    margin-left: 50px !important;
+    color: rgb(44, 44, 144) !important;
+    margin-bottom: 10px !important;
+    gap: 10px !important;
+}
+
+.container-sam {
+    max-width: 600px;
+    margin: auto;
+    align-items: center;
+    background-color: #ffffff0c !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+
+}
+
+
+.nawfel{
+    width: 50% !important;
+}
+
+h2 {
+    color: rgb(82, 82, 184) !important;
+    
+}
+
+label {
+    font-weight: bold !important;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+ 
+/* form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
+/* .mt-5{
+    margin-left: 10px !important;
+} */
+
