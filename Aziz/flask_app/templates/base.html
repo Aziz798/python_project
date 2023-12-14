@@ -41,6 +41,9 @@
                     <li><a href="/sell/house" class="page-scroll">Sell</a></li>
                     <li><a href="/creteria/house" class="page-scroll">Choose a House with Creteria</a></li>
                     <li><a href="/house/{{session['user_id']}}" class="page-scroll">{{session['username']}}'s Houses</a></li>
+                    {%if session['user_id']==1%}
+                    <li><a href="/admin" class="page-scroll">ADMIN</a></li>
+                    {%endif%}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

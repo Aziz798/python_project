@@ -100,14 +100,10 @@ def creteria():
 
 @app.post("/choose")
 def choose():
-
     houses=House.select_houses_with_crita(request.form)
     return render_template('all_houses_for_mortgage.html',houses=houses)
-@app.route('/houses/criteria/chosen')
-def show():
-    data = request.args.get('data')
-    houses=House.select_houses_with_crita(data)
-    return render_template('all_houses_for_mortgage.html',houses=houses)
+
+
 
 
 

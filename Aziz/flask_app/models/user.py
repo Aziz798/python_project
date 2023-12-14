@@ -37,6 +37,37 @@ class User:
             return cls(result[0])
         return False
     
+    @classmethod
+    def get_all_users(cls):
+        query="SELECT * FROM users "
+        result=connectToMySQL(DATABASE).query_db(query)
+        users=[]
+        for user in result:
+            users.append(cls(user))
+        return users
+    
+    @classmethod
+    def delete_user(cls,data):
+        query="""DELETE houses.*, pics.*, users.* FROM houses JOIN pics JOIN users ON
+		        users.id=houses.user_id AND houses.id=pics.house_id  WHERE users.id=%(id)s;"""
+        return connectToMySQL(DATABASE).query_db(query,data)
+    
+    @classmethod
+    def delete_house_and_pics(cls,data):
+        query="""DELETE houses.*, pics.* FROM houses JOIN users JOIN pics ON houses.id=pics.house_id WHERE houses.id=%(id)s;"""
+        return connectToMySQL(DATABASE).query_db(query,data)
+    
+    @classmethod
+    def validate_house(cls,data):
+        query=""" UPDATE houses SET admin_validation=1 WHERE id=%(house_id)s;"""
+        return connectToMySQL(DATABASE).query_db(query,data)
+    
+    @classmethod
+    def delete_one_photo(cls,data):
+        print("ùùùùùùùùùùù")
+        query='DELETE FROM pics WHERE id=%(id)s'
+        return connectToMySQL(DATABASE).query_db(query,data)
+
     @staticmethod
     def validate(data):
         is_valid=True
