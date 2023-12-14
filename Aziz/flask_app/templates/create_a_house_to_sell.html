@@ -14,10 +14,14 @@
     {%extends "base.html" %} 
     {%block content%} 
     <div class="container-sam mt-5">
+        <h2>Put A House In Display for {{session.username}}</h2>
         <form id="property-form" action="/create/house/sell" method="post">
-            <h2>Put A House In Display for {{session.username}}</h2>
+            
             <div class="form-group">
-                <input type="hidden" name="type" value="sale">
+                <label for=""> sale</label>
+                <input type="radio" name="type" value="sale" checked>
+                <label for=""> rent</label>
+                <input type="radio" name="type" value="rent">
             </div>
             </div>
             <div class="form-group">

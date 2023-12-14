@@ -11,6 +11,7 @@ class House:
         self.type=data['type']
         self.house_type=data['house_type']
         self.mortage_validation=data['mortage_validation']
+        self.admin_validation=data['admin_validation']
         self.mortage_monthly=data['mortage_monthly']
         self.location=data['location']
         self.price=data['price']
@@ -23,7 +24,8 @@ class House:
         self.owner=''
         self.owner_phone_number=''
         self.owner_email=''
-        self.pic=''    
+        self.pic=''  
+        
     @classmethod
     def create_a_house(cls,data):
         query="""INSERT INTO houses 
@@ -157,11 +159,9 @@ class House:
 
     @classmethod
     def delete_the_house_with_its_pictures(cls,data):
-        query="""DELETE houses.*, pics.*
-            FROM houses
-            JOIN pics ON houses.id = pics.house_id
-            WHERE houses.id=%(id)s
-                AND pics.house_id=%(house_id)s;"""
+        query="""DELETE FROM houses WHERE houses.id=%(id)s;"""
+        query1 = """DELETE FROM pics WHERE pics.house_id=%(house_id)s;"""
+        r1 = connectToMySQL(DATABASE).query_db(query1,data)
         return connectToMySQL(DATABASE).query_db(query,data)
     
 
@@ -172,7 +172,7 @@ class House:
                         JOIN pics ON houses.id = pics.house_id
                         WHERE houses.type = 'sale'
                         GROUP BY houses.id;
-                        ;"""
+                        """
         results=connectToMySQL(DATABASE).query_db(query)
         print(results)
         houses=[]
@@ -221,7 +221,9 @@ class House:
 
     @classmethod
     def get_all_photos_for_one_house(cls,data):
-        query='SELECT path FROM pics WHERE house_id=%(house_id)s'
+        query="""SELECT houses.id AS house_id, pics.id AS pic_id, path
+FROM houses
+JOIN pics ON houses.id = pics.house_id WHERE pics.house_id=%(house_id)s"""
         results=connectToMySQL(DATABASE).query_db(query,data)
         pics=[]
         for pic in results:
@@ -243,3 +245,35 @@ class House:
     def delete_on_pic(cls,data):
         query= "DELETE FROM pics WHERE id =%(id)s"
         return connectToMySQL(DATABASE).query_db(query,data)
+    
+
+    @classmethod
+    def admin_house_validate(cls):
+        query="""SELECT houses.*, MIN(pics.path) AS selected_path
+                        FROM houses
+                        JOIN pics ON houses.id = pics.house_id
+                        WHERE houses.admin_validation = 0 
+                        GROUP BY houses.id;
+                        ;"""
+        results=connectToMySQL(DATABASE).query_db(query)
+        print(results)
+        houses=[]
+        for house in results:
+            row= cls(house)
+            row.pic=house['selected_path']
+            houses.append(row)
+        return houses
+    
+    @classmethod
+    def select_houses_with_pics_not_validate(cls):
+        query="""select houses.*, MIN(path) as path FROM houses JOIN pics ON houses.id=pics.house_id WHERE houses.admin_validation=0 GROUP BY 
+                        houses.id;"""
+        result=connectToMySQL(DATABASE).query_db(query)
+        pictures=[]
+        for picture in result:
+            row=cls(picture)
+            row.pic=picture['path']
+            pictures.append(row)
+        return pictures
+
+
