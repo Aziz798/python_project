@@ -58,6 +58,7 @@ body {
     background-repeat: no-repeat;
     background-position: top right;
     background-size: 60% 100%;
+    border-radius: 5px;
 }
 
 .sub_page .hero_area {
@@ -448,6 +449,8 @@ a:focus {
 
 .sale_section .sale_container .box .img-box img {
     width: 100%;
+    height: 300px;
+    border-radius: 15px;
 }
 
 .sale_section .sale_container .box .detail-box {

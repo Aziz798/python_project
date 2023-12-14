@@ -276,4 +276,6 @@ JOIN pics ON houses.id = pics.house_id WHERE pics.house_id=%(house_id)s"""
             pictures.append(row)
         return pictures
 
+    # @classmethod
+    # def get_my_houses(cls)
 

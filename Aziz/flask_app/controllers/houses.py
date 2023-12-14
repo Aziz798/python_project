@@ -108,3 +108,6 @@ def choose():
 
 
 
+# @app.route('/my_house/<int:id>')
+# def myhouses(id):
+#     houses=

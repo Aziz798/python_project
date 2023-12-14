@@ -4,8 +4,8 @@
 .carousel ,.img_align{
     width: 950px;
     height: 650px;
-    border-radius: 15px;
-    border: black solid 3px;
+    border-radius: 10px;
+ 
 }
 .container_carousel{
     display: flex;
