@@ -13,16 +13,27 @@
 <body class="sameh">
     {%extends "base.html" %} 
     {%block content%} 
-    <div class="container-sam mt-5">
-        <h2>Put A House In Display for {{session.username}}</h2>
+    <h2>Put A House In Display for {{session.username}}</h2>
+    <div class="container-sam mt-5 container ">
+        
         <form id="property-form" action="/create/house/sell" method="post">
             
             <div class="form-group">
-                <label for=""> sale</label>
-                <input type="radio" name="type" value="sale" checked>
-                <label for=""> rent</label>
-                <input type="radio" name="type" value="rent">
-            </div>
+                <label for="property-type">Can it be bought with mortgage :</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" 
+                        value="sale" checked>
+                    <label class="form-check-label">
+                        sell
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type"
+                        value="rent" checked>
+                    <label class="form-check-label">
+                        rent
+                    </label>
+                </div>
             </div>
             <div class="form-group">
                 <label for="property-type">Can it be bought with mortgage :</label>
