@@ -11,63 +11,53 @@
 </head>
 
 <body class="sameh">
-    {%extends "base.html" %} 
-    {%block content%} 
-    <h2>Put A House In Display for {{session.username}}</h2>
-    <div class="container-sam mt-5 container ">
-        
+    {%extends "base.html" %}
+    {%block content%}
+    <div class="container mt-5">
+        <h2>Put A House In Display for {{session.username}}</h2>
         <form id="property-form" action="/create/house/sell" method="post">
-            
             <div class="form-group">
-                <label for="property-type">Can it be bought with mortgage :</label>
+                <label>Property Type:</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="type" 
-                        value="sale" checked>
-                    <label class="form-check-label">
-                        sell
-                    </label>
+                    <input class="form-check-input" type="radio" name="type" value="sale" checked>
+                    <label class="form-check-label">Sell</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="type"
-                        value="rent" checked>
-                    <label class="form-check-label">
-                        rent
-                    </label>
+                    <input class="form-check-input" type="radio" name="type" value="rent">
+                    <label class="form-check-label">Rent</label>
                 </div>
             </div>
+
             <div class="form-group">
-                <label for="property-type">Can it be bought with mortgage :</label>
+                <label>Mortgage Validation:</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="mortage_validation" 
-                        value="1" checked>
-                    <label class="form-check-label">
-                        With mortgage
-                    </label>
+                    <input class="form-check-input" type="radio" name="mortage_validation" value="1" checked>
+                    <label class="form-check-label">With Mortgage</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="mortage_validation"
-                        value="0" checked>
-                    <label class="form-check-label">
-                        Without mortgage
-                    </label>
+                    <input class="form-check-input" type="radio" name="mortage_validation" value="0">
+                    <label class="form-check-label">Without Mortgage</label>
                 </div>
             </div>
+
             <div class="form-group">
-                <label for="bathroom"> How much mortgage monthly:</label>
-                <input type="number" class="form-control w-50 aziz" id="mortage_monthly" name="mortage_monthly" min="1"
-                    placeholder="Enter mothly rent or mortgage">
-                </div>
+                <label for="mortage_monthly">Monthly Mortgage:</label>
+                <input type="number" class="form-control" id="mortage_monthly" name="mortage_monthly" min="1"
+                    placeholder="Enter monthly rent or mortgage">
+            </div>
+
             <div class="form-group">
                 <label for="house-type">House Type:</label>
-                <select class="form-control nawfel" id="house-type" name="house_type">
-                    <option value="apartment">Appartment</option>
+                <select class="form-control" id="house-type" name="house_type">
+                    <option value="apartment">Apartment</option>
                     <option value="house">House</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="location">Location:</label>
-                <select class="form-control nawfel" id="location" name="location">
+                <select class="form-control" id="location" name="location">
+                    <!-- Add your location options here -->
                     <option value="Tunis">Tunis</option>
                     <option value="Ariana"> Ariana</option>
                     <option value="Beja"> Beja</option>
@@ -94,35 +84,16 @@
                     <option value="Zaghouan"> Zaghouan</option>
                 </select>
             </div>
-
             <div class="form-group">
-                <label for="bathroom">Bathrooms:</label>
-                <input type="number" class="form-control w-50 nawfel" id="bathroom" name="bathroom" min="1"
-                    placeholder="Enter number of bathrooms">
-            </div>
-
-            <div class="form-group">
-                <label id="price-label" for="price">Price:</label>
-                <input type="number" class="form-control w-50 nawfel" id="price" name="price" min="100"
-                    placeholder="Enter price">
-            </div>
-
-            <div class="form-group">
-                <label for="bedrooms">Number of Bedrooms:</label>
-                <input type="number" class="form-control w-50 nawfel" id="bedrooms" name="beds" min="0"
-                    placeholder="Enter number of bedrooms">
-            </div>
-
-            <div class="form-group">
-                <label for="surface">Surface:</label>
-                <input type="number" class="form-control w-50 nawfel" id="surface" name="surface" min="0"
-                    placeholder="Enter number of surface">
+                <label for="mortage_monthly">Number of beds</label>
+                <input type="number" class="form-control"  name="beds" min="1"
+                    placeholder="Enter number of beds">
             </div>
             <div class="form-group">
-                <label for="surface">Description:</label>
-                <textarea class="form-control nawfel" id="surface" name="description" rows="3"></textarea>
+                <label for="mortage_monthly"> Number of bathrooms</label>
+                <input type="number" class="form-control"  name="bathroom" min="1"
+                    placeholder="Enter monthly rent or mortgage">
             </div>
-
 
             <button class="btn btn-danger">Submit</button>
         </form>
