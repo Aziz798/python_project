@@ -23,8 +23,7 @@ class House:
         self.owner=''
         self.owner_phone_number=''
         self.owner_email=''
-        self.pic=''
-    
+        self.pic=''    
     @classmethod
     def create_a_house(cls,data):
         query="""INSERT INTO houses 
@@ -42,7 +41,7 @@ class House:
 
     @classmethod
     def select_one_house_with_owner(cls,data):
-        query="""SELECT houses.*,first_name,last_name,email,phone_number FROM houses JOIN users ON
+        query="""SELECT houses.*,users.id AS receiver_id,first_name,last_name,email,phone_number FROM houses JOIN users ON
             houses.user_id=users.id WHERE houses.id=%(id)s;"""
         result=connectToMySQL(DATABASE).query_db(query,data)
         return result[0]
@@ -71,10 +70,10 @@ class House:
     
     @classmethod
     def select_houses_with_crita(cls,data):
-        query = """SELECT houses.*, MIN(pics.path) AS selected_path
+        query = """SELECT houses.*, MIN(pics.path) AS path
                 FROM houses
                 JOIN pics ON houses.id = pics.house_id
-                GROUP BY houses.id WHERE"""
+                WHERE"""
         criteria= {key: value for key, value in data.items() if value}
         conditions = []
 
@@ -121,10 +120,10 @@ class House:
             conditions.append(f"houses.mortage_monthly <= {criteria['max_mortage_monthly']}")
 
         if conditions:
-            query += " AND ".join(conditions)
+            query += " "+" AND ".join(conditions) +"GROUP BY houses.id"
 
         results = connectToMySQL(DATABASE).query_db(query)
-        
+        print(results,"🎈🎈🎈🎈🎈🎈")
         houses = []
         for house in results:
             row = cls(house)
@@ -229,3 +228,18 @@ class House:
             pics.append(pic)
             print(pics)
         return pics
+    
+    @classmethod
+    def get_all_photos_for_one_house_id(cls,data):
+        query='SELECT id ,path FROM pics WHERE house_id=%(house_id)s'
+        results=connectToMySQL(DATABASE).query_db(query,data)
+        pics=[]
+        for pic in results:
+            pics.append(pic)
+            print(pics)
+        return pics
+    
+    @classmethod 
+    def delete_on_pic(cls,data):
+        query= "DELETE FROM pics WHERE id =%(id)s"
+        return connectToMySQL(DATABASE).query_db(query,data)
