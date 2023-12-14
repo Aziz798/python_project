@@ -1,7 +1,7 @@
 from flask_app import app, ALLOWED_EXTENSIONS, UPLOAD_FOLDER
 from flask import render_template ,redirect,request,flash,session
 from flask_app.models.house import House
-from flask_app.models.message import Message
+
 import os
 from werkzeug.utils import secure_filename
 import uuid
@@ -65,7 +65,7 @@ def confirm_house():
 
 @app.route('/house/pics_forhouse/<int:id>')
 def get_house_by_id(id):
-    pics=House.get_all_photos_for_one_house({'house_id':id})
+    pics=House.get_all_photos_for_one_house_id({'house_id':id})
     return render_template('on_house.html', data=id ,pics=pics)
 
 
@@ -88,15 +88,26 @@ def one_house(id):
     return render_template('one_house.html', house=home, pics=pics)
 
 
-@app.route("/message/<int:sender_id>/<int:house_id>/<int:receiver_id>")
-def message(sender_id,house_id,receiver_id):
-    data={
-        'sender_id':sender_id,
-        'house_id':house_id,
-        'receiver_id':receiver_id
-    }
-    messages=Message.show_one_conversation(data)
-    return render_template('chat_room.html',messages=messages)
+
+@app.post('/delete/photo/<int:id>')
+def deletion(id):
+    House.delete_on_pic({'id':id})
+    return redirect(f'/house/pics_forhouse/{request.form['house_id']}')
+
+@app.route('/creteria/house')
+def creteria():
+    return render_template('choose_criteria.html')
+
+@app.post("/choose")
+def choose():
+
+    houses=House.select_houses_with_crita(request.form)
+    return render_template('all_houses_for_mortgage.html',houses=houses)
+@app.route('/houses/criteria/chosen')
+def show():
+    data = request.args.get('data')
+    houses=House.select_houses_with_crita(data)
+    return render_template('all_houses_for_mortgage.html',houses=houses)
 
 
 

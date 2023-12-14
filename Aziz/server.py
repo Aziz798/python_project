@@ -1,7 +1,7 @@
-from flask_app import app
+from flask_app import socketio,app
 from flask_app.controllers import users,houses
 
 
 
 if __name__=="__main__":
-    app.run(debug=True,port=5001)
+    socketio.run(app, debug=True)
