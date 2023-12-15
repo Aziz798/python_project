@@ -60,6 +60,11 @@
                                     <span>{{house.beds}}</span>bds | <span>{{house.bathroom}}</span> ba | <span>{{house.surface}}</span> m² {{house.house_type}} for {{house.type}}
                                 </p>
                                 <p>{{house.description}}</p>
+                                {% if session[user_id]==1%}
+                                <form action="/delete/house/{{house.id}}" method="post">
+                                    <button class="btn btn-danger m-10">Delete</button>
+                                </form>
+                                {%endif%}
                             </div>
                         </div>
                     </a>

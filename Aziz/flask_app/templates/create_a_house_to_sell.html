@@ -13,10 +13,10 @@
 <body class="sameh">
     {%extends "base.html" %}
     {%block content%}
-    <div class="container mt-5">
+    <div class="container mt-5" style=" padding:100px;">
         <h2>Put A House In Display for {{session.username}}</h2>
         <form id="property-form" action="/create/house/sell" method="post">
-            <div class="form-group">
+            <div class="form-group form-check form-check-inline">
                 <label>Property Type:</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="type" value="sale" checked>
@@ -27,8 +27,8 @@
                     <label class="form-check-label">Rent</label>
                 </div>
             </div>
-
-            <div class="form-group">
+            <br>
+            <div class="form-group form-check form-check-inline">
                 <label>Mortgage Validation:</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="mortage_validation" value="1" checked>
@@ -42,7 +42,7 @@
 
             <div class="form-group">
                 <label for="mortage_monthly">Monthly Mortgage:</label>
-                <input type="number" class="form-control" id="mortage_monthly" name="mortage_monthly" min="1"
+                <input type="number" class="form-control" id="mortage_monthly" name="mortage_monthly" min="0"
                     placeholder="Enter monthly rent or mortgage">
             </div>
 
@@ -53,7 +53,11 @@
                     <option value="house">House</option>
                 </select>
             </div>
-
+            <div class="form-group">
+                <label for="mortage_monthly">price :</label>
+                <input type="number" class="form-control" id="price" name="price" min="1"
+                    placeholder="Enter monthly rent or mortgage">
+            </div>
             <div class="form-group">
                 <label for="location">Location:</label>
                 <select class="form-control" id="location" name="location">
@@ -89,13 +93,25 @@
                 <input type="number" class="form-control"  name="beds" min="1"
                     placeholder="Enter number of beds">
             </div>
+
             <div class="form-group">
                 <label for="mortage_monthly"> Number of bathrooms</label>
                 <input type="number" class="form-control"  name="bathroom" min="1"
                     placeholder="Enter monthly rent or mortgage">
             </div>
-
-            <button class="btn btn-danger">Submit</button>
+            <div class="form-group">
+                <label for="mortage_monthly">Surface:</label>
+                <input type="number" class="form-control" id="mortage_monthly" name="surface" min="1"
+                    placeholder="Enter">
+            </div>
+            <div class="form-group">
+                <label for="mortage_monthly">description:</label>
+                <textarea class="form-control" id="mortage_monthly" name="description" rows="3"  min="1" placeholder="Enter Description"></textarea> 
+                    
+            </div>
+            <div class="text-center mb-5">
+                <button class="btn btn-info btn-lg w-100">Submit</button>
+            </div>
         </form>
     </div>
     {%block footer%}

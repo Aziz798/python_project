@@ -1,27 +1,37 @@
 *{
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
+}
+.body {
+	position: fixed;
+	overflow: visible;
+	top: 0;
+	font-size: 12px;
+	font-family: sans-serif;
+	background: #2c3e50;
+	width: 100%;
+	z-index: 100;
 }
 
 .nav {
 	margin: auto;
-
-	position: relative;
-	width: 1200px;
+	position: absolute;
+	display: flex;
+	/* gap:2px; */
+	/* justify-content: space-between; */
+	width: 80%;
 	height: 80px;
 	background-color: #34495e;
 	border-radius: 8px;
 	font-size: 0;
+	z-index: 1;
 }
-.nav {
-    position: relative;
-    display: flex;
-}
+
 
 .nav a {
     text-decoration: none;
     color: #fff;
-    padding: 14px 16px;
+    /* padding: 14px 16px; */
     transition: 0.3s;
 }
 
@@ -29,7 +39,7 @@
 
 .animation {
     position: absolute;
-    width: 100px;
+    width: inherit;
     height: 100%;
     background-color: #0077B6;
     transition: 1s;
@@ -51,6 +61,7 @@
 	position: absolute;
 	height: 100%;
 	top: 0;
+	right: 20px;
 	z-index: 0;
 	transition: all .5s ease 0s;
 	border-radius: 8px;
@@ -166,12 +177,12 @@
 	transition: all .5s ease 0s;
 	border-radius: 8px;
 }
-
 .nav .start-home, a:nth-child(1):hover~.animation {
-	width: 80px;
+	width: 100%;
 	left: 0;
 	background-color: #0077B6;
 }
+/*
 .nav .start-about, a:nth-child(2):hover~.animation {
 	width: 80px;
 	left: 80px;
@@ -191,11 +202,11 @@
 	width: 160px;
 	left: 450px;
 	background-color: #0077B6;
-}
+} */
 
 
 /* Styles for the new navigation items */
-.nav .start-item6, a:nth-child(6):hover~.animation {
+/* .nav .start-item6, a:nth-child(6):hover~.animation {
     width: 120px;
     left: 620px;
     background-color: #0077B6;
@@ -223,21 +234,27 @@
     width: 150px;
     left: 1050px;
     background-color: #0077B6;
+} */
+
+.nav a:hover{
+	background-color: #0077B6;
+	border-radius: 10%;
 }
+/* .nav .start-home, a:nth-child(1) {
 
-.body {
-    position: sticky;
-    top: 0;
-	font-size: 12px;
-	font-family: sans-serif;
-	background: #2c3e50;
+	background-color: #0077B6;
+	border-radius: 10%;
+} */
+
+/* .nav .start-home, a:nth-child(1)::before {
+
+	background-color: #0077B6;
+	border-radius: 10%;
 }
-
-
-
-
-
-
+.nav .start-home, a:nth-child(1)::after {
+	background-color: crimson;
+	border-radius: 10%;
+} */
 
 
 

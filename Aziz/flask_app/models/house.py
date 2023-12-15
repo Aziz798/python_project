@@ -276,6 +276,17 @@ JOIN pics ON houses.id = pics.house_id WHERE pics.house_id=%(house_id)s"""
             pictures.append(row)
         return pictures
 
-    # @classmethod
-    # def get_my_houses(cls)
+    @classmethod
+    def get_my_houses(cls,data):
+        query="""
+                SELECT houses.*,MIN(path) AS path FROM houses JOIN pics ON houses.id=pics.house_id WHERE houses.user_id=%(user_id)s
+                    GROUP BY houses.id """
+        result=connectToMySQL(DATABASE).query_db(query,data)
+        pictures=[]
+        for picture in result:
+            row=cls(picture)
+            row.pic=picture['path']
+            pictures.append(row)
+        return pictures
+
 

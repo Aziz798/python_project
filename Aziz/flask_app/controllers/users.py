@@ -70,6 +70,5 @@ def validate_photos_for_the_house(id):
 
 @app.post("/delete/one/photo/<int:pic_id>/<int:house_id>")
 def delete_that_pic(pic_id,house_id):
-    print("cccccccccccc")
     User.delete_one_photo({'id':pic_id})
     return redirect(f'/house/admin/{house_id}')
