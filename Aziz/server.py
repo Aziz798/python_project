@@ -1,5 +1,5 @@
 from flask_app import socketio,app
-from flask_app.controllers import users,houses
+from flask_app.controllers import users,houses,messages
 
 
 

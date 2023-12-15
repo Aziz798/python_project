@@ -8,7 +8,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container mt-5">
+    {% extends "base.html" %} 
+    {% block content %}
+    <div class="container mt 50px" style=" margin-bottom: 10px;">
         <form action="/choose" method="post">
             <div class="form-group">
                 <label for="min_price">Min Price</label>
@@ -77,8 +79,8 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label>House Type</label>
+            <div class="form-group form-check form-check-inline">
+                <label>House Type :</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="house_type" value="house" id="house">
                     <label class="form-check-label" for="house">House</label>
@@ -89,18 +91,18 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group ">
                 <label for="mortgage_validation">With Mortgage</label>
                 <input type="radio" name="mortage_validation" value="1">
             </div>
 
             <div class="form-group">
-                <label for="mortage_validation">Without Mortgage</label>
+                <label for="mortage_validation">Without Mortgage:</label>
                 <input type="radio" name="mortage_validation" value="0">
             </div>
 
             <div class="form-group">
-                <label for="min_mortage_monthly">Min Monthly Mortgage</label>
+                <label for="min_mortage_monthly">Min Monthly Mortgage:</label>
                 <input type="number" class="form-control" id="min_mortage_monthly" name="min_mortage_monthly">
             </div>
 
@@ -112,7 +114,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-
+    {% endblock %}
     <!-- Include Bootstrap JS and jQuery if needed -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

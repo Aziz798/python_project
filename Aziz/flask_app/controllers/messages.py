@@ -4,15 +4,11 @@ from flask_app import app,socketio
 from flask_app.models.message import Message
 rooms = {}
 
-@app.route("/message/<int:sender_id>/<int:house_id>/<int:receiver_id>")
-def message(sender_id,house_id,receiver_id):
-    data={
-        'sender_id':sender_id,
-        'house_id':house_id,
-        'receiver_id':receiver_id
-    }
-    messages=Message.show_one_conversation(data)
-    return render_template('chat_room.html',messages=messages)
+@app.route("/message")
+def message():
+
+ 
+    return render_template('chat_room.html')
 
 
 

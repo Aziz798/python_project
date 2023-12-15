@@ -14,28 +14,30 @@
     
         {% endblock %}
 </head>
-<body>
+<body >
     <div class="body">
         <nav class="nav">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
+            <a href="/dashboard">Home</a>
+            <a href="/dashboard#about">About</a>
+            <a href="/dashboard#services">Services</a>
             <a href="/buy/house">Houses for sale</a>
             <a href="/rent/house">houses for rent</a>
             <a href="/sell/house">List a house</a>
-            <a href="#">My houses</a>
-            <a href="#">Admin</a>
-            <a href="#">Contact</a>
-            <a href="#">Log out</a>
-            <div class="animation start-home"></div>
+            <a href="/creteria/house">Choose</a>
+            <a href="/my_house/{{session['user_id']}}">My houses</a>
+            {%if session['user_id']==1%}
+            <a href="/admin">Admin</a>
+            {%endif%}
+            <a href="/dashboard#footer-section">Contact</a>
+            <a href="/">Log out</a>
+            <!-- <div class="animation start-home"></div> -->
         </nav>
     </div>
-    <div>
-        {% block content %}
-        {% endblock %}
-
+    <div style="min-height: 100vh;">
+            {% block content %}
+            {% endblock %}
     </div>
-    <footer class="footer-section">
+    <footer class="footer-section" id="footer-section">
         <div class="container">
             <div class="footer-cta pt-5 pb-5">
                 <div class="row">

@@ -1,7 +1,7 @@
 const data = [
   {
     place: 'Welcome to ',
-    title: 'Tunisia Home Hub:',
+    title: 'Housify:',
     description: 'At Tunisia Home Hub, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Tunisia Home Hub is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
     title2: '',
     image: './static/assets/maria.jpg',
@@ -9,37 +9,37 @@ const data = [
   },
   {
     place: 'Welcome to ',
-    title: 'Tunisia Home Hub:',
-    description: 'At Tunisia Home Hub, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Tunisia Home Hub is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
+    title: 'Housify:',
+    description: 'At Housify, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Housify is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
     title2: '',
     image: './static/assets/goodview1.jpg',
     color:'#93a5d4'
   },
   {
     place: 'Welcome to ',
-    title: 'Tunisia Home Hub:',
-    description: 'At Tunisia Home Hub, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Tunisia Home Hub is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
+    title: 'Housify:',
+    description: 'At Housify, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Housify is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
     title2: '',
     image: './static/assets/goodview2.jpg'
   },
   {
     place: 'Welcome to ',
-    title: 'Tunisia Home Hub:',
-    description: 'At Tunisia Home Hub, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Tunisia Home Hub is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
+    title: 'Housify:',
+    description: 'At Housify, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Housify is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
     title2: '',
     image: './static/assets/goodview3.jpg'
   },
   {
     place: 'Welcome to ',
-    title: 'Tunisia Home Hub:',
-    description: 'At Tunisia Home Hub, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Tunisia Home Hub is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
+    title: 'Housify:',
+    description: 'At Housify, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Housify is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
     title2: '',
     image: './static/assets/goodview4.jpg'
   },
   {
     place: 'Welcome to ',
-    title: 'Tunisia Home Hub:',
-    description: 'At Tunisia Home Hub, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Tunisia Home Hub is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
+    title: 'Housify:',
+    description: 'At Housify, we redefine the real estate experience, providing a seamless platform for those looking to rent, sell, or secure a mortgage in the beautiful landscapes of Tunisia. From charming apartments in the heart of Tunis to spacious villas along the coastal regions, our listings span the diverse tapestry of Tunisia\'s real estate offerings. Discover the joy of finding your perfect home or investment property with our user-friendly interface. Whether you are in pursuit of a rental oasis, planning to sell your property, or navigating the complexities of mortgage options, Housify is your trusted companion. We are dedicated to making your real estate journey in Tunisia an exciting and rewarding venture. Explore, dream, and find your place in the enchanting real estate landscape of Tunisia.',
     title2: '',
     image: './static/assets/goodview5.jpg'
   }

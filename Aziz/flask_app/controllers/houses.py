@@ -108,6 +108,7 @@ def choose():
 
 
 
-# @app.route('/my_house/<int:id>')
-# def myhouses(id):
-#     houses=
+@app.route('/my_house/<int:id>')
+def myhouses(id):
+    houses=House.get_my_houses({'user_id':id})
+    return render_template('my_houses.html',houses=houses)
